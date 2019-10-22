@@ -12,16 +12,17 @@ class DemoEnv(gym.Env):
 			self.state.append(0)
 		self.count = 0
 		self.done = 0
-		self.info = [0,0]
+		self.info = {'action': 0, 'count': self.count}
 		self.reward = 0
 		self.action_space = spaces.Discrete(3)
+		self.observation_space = spaces.MultiDiscrete([3]*10)
 
 	def setseed(self, seed):
 		random.seed(seed)
 
 	def step(self, action):
 		self.reward = 0
-		self.info = [action, self.count]
+		self.info = {'action': action, 'count': self.count}
 		if self.done == 1:
 			print("Game Over")
 			return [self.state, self.reward, self.done, self.info]
@@ -30,7 +31,7 @@ class DemoEnv(gym.Env):
 			self.count += 1
 			self.reward = 0
 			if action == self.count%3:
-				self.reward = 100
+				self.reward = 1 # normalization
 			
 			for i in range(9):
 				self.state[9-i] = self.state[9-i-1]
@@ -47,13 +48,13 @@ class DemoEnv(gym.Env):
 			self.state[i] = 0
 		self.count = 0
 		self.done = 0
-		self.info = [0,0]
+		self.info = {'action': 0, 'count': self.count}
 		self.reward = 0
 		return self.state
 
 	def render(self):
 		for i in range(10):
 			print(self.state[i],end=" ")
-		print("")
+		# print("")
 		print("step:",self.count,"reward:",self.reward)
 
