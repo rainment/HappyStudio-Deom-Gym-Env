@@ -3,8 +3,11 @@ This is an implementation of a Demo game as a gym environment. It can be used to
 
 
 
+First you need Gym-Env
 
-To install the environment, just go to the demo-env folder and run the command 
+http://gym.openai.com/docs/
+
+Then to install the environment, just go to the demo-env folder and run the command 
 
 pip install -e .
 
