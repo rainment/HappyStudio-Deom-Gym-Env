@@ -4,10 +4,12 @@ This is an implementation of a Demo game as a gym environment. It can be used to
 
 
 
-To install the environment, just go to the demo-env folder and run the command -
+To install the environment, just go to the demo-env folder and run the command 
+
 pip install -e .
 
-This will install the gym environment. Now, we can use our gym environment with the following -
+This will install the gym environment. Now, we can use our gym environment with the following 
+
 import gym
 import demo_env
 env = gym.make('demo-v0')
