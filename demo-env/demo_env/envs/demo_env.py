@@ -5,9 +5,6 @@ import random
 
 class DemoEnv(gym.Env):
 	metadata = {'render.modes': ['human']}
-	class action_space:
-		def sample():
-			return random.randint(0,2)
 
 	def __init__(self):
 		self.state = []
@@ -17,7 +14,10 @@ class DemoEnv(gym.Env):
 		self.done = 0
 		self.info = [0,0]
 		self.reward = 0
+		self.action_space = spaces.Discrete(3)
 
+	def setseed(self, seed):
+		random.seed(seed)
 
 	def step(self, action):
 		self.reward = 0
