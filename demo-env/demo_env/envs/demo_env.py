@@ -30,13 +30,14 @@ class DemoEnv(gym.Env):
 			
 			self.count += 1
 			self.reward = 0
-			if action == self.count%3:
+			winner = self.count%3 #random.randint(0,2) #self.count%3
+			if action == winner:
 				self.reward = 1 # normalization
-			
+				
 			for i in range(9):
 				self.state[9-i] = self.state[9-i-1]
 			
-			self.state[0] = self.count%3	
+			self.state[0] = winner	
 	 
 			if self.count > 101:
 				self.done = 1
